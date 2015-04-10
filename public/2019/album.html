@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>UCSD 2019 新生相册</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body style="background-image: url(../images/sponsorBg.jpg); background-attachment:fixed;">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><b>UCSD CHINESE UNION</b></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/about">关于CU</a>
+                    </li>
+                    <li><a href="/sponsor">CU赞助商</a>
+                    </li>
+                    <li><a href="/service">CU公共服务平台</a>
+                    </li>
+                    <li><a href="/2019">2019新生频道</a>
+                    </li>
+                    <li><a href="/#contactinfo">联系我们</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+        <br>
+        <br>
+            <div class="col-lg-12">
+                <h1 class="page-header">UCSD 2019 新生相册
+                    <small>by UCSDCU</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="/2019">UCSD 2019新生频道</a>
+                    </li>
+                    <li class="active">UCSD 2019 新生相册</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+        <!--div class = "gallery"-->
+        <div class="row" id="photorow">
+            <!--button id="photorow">
+            </button-->
+        </div>
+        
+        <hr>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+              </div>
+              <div class="modal-body">
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination>
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+        <center>
+            <img src="../images/logos/logo.png" width="120" height="120" />
+                <div class="col-lg-12">
+                    <p style="color:#000">Copyright &copy; Chinese Union @ UCSD 2014 By Jason Zidong Jiang</p>
+				</div>
+        </center>
+	</footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="../js/jquery-1.10.2.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- load img javascript -->
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.0.min.js"></script>
+    <script type="text/javascript">
+        Parse.initialize("Uv6IWpKYbLvknOqrz6kEcNVMcWDlAbN6BjuMjGxG", "TWXqC8vOkLT9HBjc06ANpm15FiPXaP0Nv1GeEgKZ");
+        
+        var photo2019 = [];
+        var id2019 = [];
+        var Album2019 = Parse.Object.extend("Album2019");
+        var new2019er = new Album2019();
+        var query = new Parse.Query(Album2019);
+        query.find({
+          success: function(new2019er) 
+          {
+            for (var i = new2019er.length - 1; i >= 0; i--) 
+            {
+                photo2019[i] = new2019er[i].get("photo");
+                id2019[i] = new2019er[i].id;
+                $('<button/>', {
+                    'class':'col-md-3 img-portfolio',
+                    'data-toggle' : 'modal',
+                    'data-target' : '#myModal',
+                    'id' : id2019[i],
+                    'onclick' : 'updatemodal(this.id)',
+                    'html':'<img class="img-responsive img-hover" src="'+ photo2019[i].url() +'">'
+                }).appendTo($("#photorow"));
+            }
+          },
+          error: function(object, error) {
+            // The object was not retrieved successfully.
+            // error is a Parse.Error with an error code and message.
+          }
+        });
+        
+        function updatemodal(button_id)
+        {
+            query.get(button_id,{
+                success: function(new2019er) {
+                    $(".modal-title").text(new2019er.get("name"));
+                    $(".modal-body").html("<center><img src=" + new2019er.get("photo").url() + " width='60%' height='60%'><h4>大家好，我叫"+ new2019er.get("name")+"。在"+new2019er.get("college")+"学院，专业"+new2019er.get("major")+"。"+new2019er.get("memo")+"</h4></center>");
+            },
+                error: function(object, error) {
+                    // The object was not retrieved successfully.
+                    // error is a Parse.Error with an error code and message.
+                }
+            });
+        }
+        
+    </script>
+
+</body>
+
+</html>
