@@ -167,11 +167,12 @@
             {
                 photo2019[i] = new2019er[i].get("photo");
                 id2019[i] = new2019er[i].id;
-                $('<button/>', {
+                $('<a/>', {
                     'class':'col-md-3 img-portfolio',
                     'data-toggle' : 'modal',
-                    'data-target' : '#myModal',
+                    'href' : '#myModal',
                     'id' : id2019[i],
+                    'role' : 'button',
                     'onclick' : 'updatemodal(this.id)',
                     'html':'<img class="img-responsive img-hover" src="'+ photo2019[i].url() +'">'
                 }).appendTo($("#photorow"));
