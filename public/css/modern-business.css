@@ -84,7 +84,16 @@ footer {
 
 @media(max-width:767px) {
     .img-portfolio {
-        margin-bottom: 15px;
+        margin-bottom: 15px; 
+        height: 50%;
+        width: 50%;
+        vertical-align: center;
+    }
+
+    .img-responsive{
+        height: 50%;
+        width: 50%;
+        vertical-align: center;
     }
 
     header.carousel .carousel {

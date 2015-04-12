@@ -15,7 +15,8 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../css/modern-business.css" rel="stylesheet">
+    <!--link href="../css/modern-business.css" rel="stylesheet"-->
+    <link href="../css/4-col-portfolio.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -26,7 +27,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body style="background-image: url(../images/sponsorBg.jpg); background-attachment:fixed;">
@@ -86,8 +86,7 @@
         <!-- Projects Row -->
         <!--div class = "gallery"-->
         <div class="row" id="photorow">
-            <!--button id="photorow">
-            </button-->
+            
         </div>
         
         <hr>
@@ -167,15 +166,19 @@
             {
                 photo2019[i] = new2019er[i].get("photo");
                 id2019[i] = new2019er[i].id;
+                $('<div/>',{
+                    'class':'col-md-3 portfolio-item',
+                    'id':'photodiv'+id2019[i],
+                    'html':''
+                }).appendTo($("#photorow"));
                 $('<a/>', {
-                    'class':'col-md-3 img-portfolio',
                     'data-toggle' : 'modal',
                     'href' : '#myModal',
                     'id' : id2019[i],
                     'role' : 'button',
                     'onclick' : 'updatemodal(this.id)',
                     'html':'<img class="img-responsive img-hover" src="'+ photo2019[i].url() +'">'
-                }).appendTo($("#photorow"));
+                }).appendTo($("#photodiv"+id2019[i]));
             }
           },
           error: function(object, error) {
