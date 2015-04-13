@@ -93,7 +93,7 @@ map "/2019/faq" do
 }
 end
 
-map "/2019/album" do
+map "/2019/photo" do
   run lambda { |env|
   [
     200, 
