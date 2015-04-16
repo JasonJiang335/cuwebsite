@@ -16,7 +16,8 @@
 
     <!-- Custom CSS -->
     <!--link href="../css/modern-business.css" rel="stylesheet"-->
-    <link href="../css/4-col-portfolio.css" rel="stylesheet">
+    <!--link href="../css/4-col-portfolio.css" rel="stylesheet"-->
+    <link href="../css/thumbnail-gallery.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -167,12 +168,13 @@
                 photo2019[i] = new2019er[i].get("photo");
                 id2019[i] = new2019er[i].id;
                 $('<div/>',{
-                    'class':'col-md-3 portfolio-item',
+                    'class':'col-lg-3 col-md-4 col-xs-6 thumb',
                     'id':'photodiv'+id2019[i],
                     'html':''
                 }).appendTo($("#photorow"));
                 $('<a/>', {
                     'data-toggle' : 'modal',
+                    'class':'thumbnail',
                     'href' : '#myModal',
                     'id' : id2019[i],
                     'role' : 'button',
@@ -192,7 +194,7 @@
             query.get(button_id,{
                 success: function(new2019er) {
                     $(".modal-title").text(new2019er.get("name"));
-                    $(".modal-body").html("<center><img src=" + new2019er.get("photo").url() + " width='60%' height='60%'><h4>大家好，我叫"+ new2019er.get("name")+"。在"+new2019er.get("college")+"学院，专业"+new2019er.get("major")+"。"+new2019er.get("memo")+"</h4></center>");
+                    $(".modal-body").html("<center><img src=" + new2019er.get("photo").url() + " width='60%' height='60%'><h4>大家好，我叫"+ new2019er.get("name")+"。在"+new2019er.get("college")+"学院，专业"+new2019er.get("major")+"。"+new2019er.get("memo")+"</h4><!--input type='text' id='usrname'><input type='submit' onclick=addcomment(button_id)><br><textarea rows='4' cols='50' id='comment'></textarea--></center>");
             },
                 error: function(object, error) {
                     // The object was not retrieved successfully.
@@ -200,6 +202,20 @@
                 }
             });
         }
+
+        /*function addcommet(photo_id)
+        {
+            alert("asdasdada");
+            var Comment19 = Parse.Object.extend("Comment2019");
+            var newComment = new Comment19();
+            var usrname = $("#usrname")[0];
+            var comment = $("#comment")[0];
+            Comment19.set("usrname", usrname.value);
+            Comment19.set("comment", comment.value);
+            Comment19.set("uid", photo_id);
+            Comment19.save();
+            alert(uid+"  "+usrname.value);
+        }*/
         
     </script>
 
