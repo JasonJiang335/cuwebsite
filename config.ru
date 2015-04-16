@@ -118,3 +118,16 @@ map "/2019/upload" do
   ]
 }
 end
+
+map "/tritonnotes.pdf" do
+  run lambda { |env|
+  [
+    200, 
+    {
+      'Content-Type'  => 'file/pdf', 
+      'Cache-Control' => 'public, max-age=86400' 
+    },
+    File.open('public/files/TritonNotesbyUCSDCU.pdf', File::RDONLY)
+  ]
+}
+end
