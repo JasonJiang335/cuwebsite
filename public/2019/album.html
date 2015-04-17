@@ -160,7 +160,7 @@
         var Album2019 = Parse.Object.extend("Album2019");
         var new2019er = new Album2019();
         var query = new Parse.Query(Album2019);
-        query.limit = 1000;
+        query.limit(1000);
         query.find({
           success: function(new2019er) 
           {
