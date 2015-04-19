@@ -161,27 +161,39 @@
         var new2019er = new Album2019();
         var query = new Parse.Query(Album2019);
         query.limit(1000);
+
+        query.find({
+            success:function (new2019er) 
+            {
+                if(new2019er.length )
+            }
+        })
+
         query.find({
           success: function(new2019er) 
           {
             for (var i = new2019er.length - 1; i >= 0; i--) 
             {
-                photo2019[i] = new2019er[i].get("photo");
-                id2019[i] = new2019er[i].id;
-                $('<div/>',{
-                    'class':'col-lg-3 col-md-4 col-xs-6 thumb',
-                    'id':'photodiv'+id2019[i],
-                    'html':''
-                }).appendTo($("#photorow"));
-                $('<a/>', {
-                    'data-toggle' : 'modal',
-                    'class':'thumbnail',
-                    'href' : '#myModal',
-                    'id' : id2019[i],
-                    'role' : 'button',
-                    'onclick' : 'updatemodal(this.id)',
-                    'html':'<img class="img-responsive img-hover" style="max-height:200px;" src="'+ photo2019[i].url() +'">'
-                }).appendTo($("#photodiv"+id2019[i]));
+                for(var j = 20; i >= 0; i--)
+                {
+                    photo2019[i] = new2019er[i].get("photo");
+                    id2019[i] = new2019er[i].id;
+                    $('<div/>',{
+                        'class':'col-lg-3 col-md-4 col-xs-6 thumb',
+                        'id':'photodiv'+id2019[i],
+                        'html':''
+                    }).appendTo($("#photorow"));
+                    $('<a/>', {
+                        'data-toggle' : 'modal',
+                        'class':'thumbnail',
+                        'href' : '#myModal',
+                        'id' : id2019[i],
+                        'role' : 'button',
+                        'onclick' : 'updatemodal(this.id)',
+                        'html':'<img class="img-responsive img-hover" style="max-height:200px;" src="'+ photo2019[i].url() +'">'
+                    }).appendTo($("#photodiv"+id2019[i]));
+                }
+                
             }
           },
           error: function(object, error) {
