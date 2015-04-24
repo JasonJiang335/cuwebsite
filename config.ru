@@ -1,5 +1,5 @@
 use Rack::Static,
-  :urls => ["/images", "/js", "/css"],
+  :urls => ["/images", "/js", "/css", "/less"],
   :root => "public"
 
 map "/" do
@@ -128,6 +128,32 @@ map "/tritonnotes.pdf" do
       'Cache-Control' => 'public, max-age=86400' 
     },
     File.open('public/files/TritonNotesbyUCSDCU.pdf', File::RDONLY)
+  ]
+}
+end
+
+map "/jasonjiang" do
+  run lambda { |env|
+  [
+    200, 
+    {
+      'Content-Type'  => 'text/html', 
+      'Cache-Control' => 'public, max-age=86400' 
+    },
+    File.open('public/files/startbootstrap-creative/index.html', File::RDONLY)
+  ]
+}
+end
+
+map "/jasonjiang/jasonjiangresume.pdf" do
+  run lambda { |env|
+  [
+    200, 
+    {
+      'Content-Type'  => 'file/pdf', 
+      'Cache-Control' => 'public, max-age=86400' 
+    },
+    File.open('public/files/startbootstrap-creative/ZidongJiangCV.pdf', File::RDONLY)
   ]
 }
 end
